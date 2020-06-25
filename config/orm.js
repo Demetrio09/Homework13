@@ -64,11 +64,11 @@ const orm = {
         });
     },
     // Updates the data
-    updateOne: function(table, objVals, condition, cb) {
+    updateOne: function(table, objColVals, condition, cb) {
         const queryString = "UPDATE " + table;
 
         queryString += "SET ";
-        queryString += objToSql(objVals);
+        queryString += objToSql(objColVals);
         queryString += " WHERE ";
         queryString += condition;
 
