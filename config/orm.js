@@ -39,9 +39,11 @@ function objToSql(ob) {
 const orm = {
     // Select all data from table
     selectAll: (tableInput, cb) => {
-        const queryString = "SELECT * FORM " + tableInput + ";";
+        const queryString = "SELECT * FROM " + tableInput + ";";
         connection.query(queryString, (err, result) => {
-            if (err) throw err;
+            if (err) {
+                throw err;
+            }
             cb(result);
         });
     },
@@ -59,12 +61,14 @@ const orm = {
         console.log(queryString);
 
         connection.query(queryString, vals, function (err, result) {
-            if (err) throw err;
+            if (err) {
+                throw err;
+            }
             cb(result);
         });
     },
     // Updates the data
-    updateOne: function(table, objColVals, condition, cb) {
+    updateOne: function (table, objColVals, condition, cb) {
         const queryString = "UPDATE " + table;
 
         queryString += "SET ";
@@ -73,8 +77,10 @@ const orm = {
         queryString += condition;
 
         console.log(queryString);
-        connection.query(queryString, function(err, result) {
-            if (err) throw err;
+        connection.query(queryString, function (err, result) {
+            if (err) {
+                throw err;
+            }
             cb(result);
         });
     }
