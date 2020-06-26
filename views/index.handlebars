@@ -1,0 +1,19 @@
+<style media="screen">
+  li {
+    background-color: wheat;
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 50%;
+    font-family: sans-serif;
+  }
+</style>
+
+<h1>Bugers for me: {{eater}}</h1>
+
+<ul>
+{{#each burgers }}
+  <li>{{this.id}}</li>
+  <li>{{this.burger_name}}</li>
+  <li>{{this.devoured}}</li>
+{{/each}}
+</ul>

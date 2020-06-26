@@ -22,9 +22,9 @@ router.post("/api/burgers", (req, res) => {
     ], [
         req.body.burger_name, req.body.devoured
     ], function(resut) {
-        // Send back the ID of thenoew quote
+        // Send back the ID of the new quote
         res.json({ id: resut.insertId})
-    })
-})
+    });
+});
 
 module.exports = router;
