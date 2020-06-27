@@ -10,30 +10,32 @@
 
 <h1>Eat Da Burger! {{eater}}</h1>
 
+{{!-- 
 <ul>
     {{#each burgers}}
     <li>{{this.id}}</li>
     <li>{{this.burger_name}}</li>
     <li>{{this.devoured}}</li>
     {{/each}}
-</ul>
+</ul> 
+--}}
 
 <h2>Burgers ready to eat!</h2>
 
 <ul>
     {{#each burgers}}
-    {{$unless devoured}}
-    {{> burgers/burger-block devoured=true}}
+    {{#unless devoured}}
+    {{> burgers/burger-block devour=true}}
     {{/unless}}
     {{/each}}
 </ul>
 
-<h2>Burgers are devoured!</h2>
+<h2>Devoured burgers!</h2>
 
 <ul>
     {{#each burgers}}
     {{#if devoured}}
-    {{> burgers/burger-block devoured=false}}
+    {{> burgers/burger-block devour=false}}
     {{/if}}
     {{/each}}
 </ul>
@@ -44,12 +46,6 @@
     <div class="from-group">
         <label for="bu">Burger Name</label>
         <input type="text" id="bu" name="burger_name">
-    </div>
-
-    <div class="form-goup">
-        <label for="devour">Devour?</label><br>
-        <input type="radio" name="devoured" value="1" checked> Devoured<br>
-        <input type="radio" name="devoured" value="0"> Not Devoured
     </div>
 
     <button type="submit">Add it!</button>

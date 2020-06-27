@@ -36,10 +36,10 @@ function objToSql(ob) {
 }
 
 
-const orm = {
+let orm = {
     // Select all data from table
     selectAll: (tableInput, cb) => {
-        const queryString = "SELECT * FROM " + tableInput + ";";
+        let queryString = "SELECT * FROM " + tableInput + ";";
         connection.query(queryString, (err, result) => {
             if (err) {
                 throw err;
@@ -49,7 +49,7 @@ const orm = {
     },
     // Insert data into table
     insertOne: function (table, cols, vals, cb) {
-        const queryString = "INSERT INTO " + table;
+        let queryString = "INSERT INTO " + table;
 
         queryString += " (";
         queryString += cols.toString();
@@ -69,9 +69,9 @@ const orm = {
     },
     // Updates the data
     updateOne: function (table, objColVals, condition, cb) {
-        const queryString = "UPDATE " + table;
+        let queryString = "UPDATE " + table;
 
-        queryString += "SET ";
+        queryString += " SET ";
         queryString += objToSql(objColVals);
         queryString += " WHERE ";
         queryString += condition;
