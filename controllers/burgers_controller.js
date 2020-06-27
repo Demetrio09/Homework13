@@ -14,7 +14,17 @@ router.get("/", function (req, res) {
         console.log(hbsObject);
         res.render("index", hbsObject);
     });
-});
+})
+
+router.get("/api/all", function(req, res) {
+    burger.selectAll(function (data) {
+        const hbsObject = {
+            burgers: data
+        };
+        console.log(hbsObject);
+        return res.json(hbsObject);
+    });
+})
 
 router.post("/api/burgers", (req, res) => {
     burger.insertOne([
@@ -25,6 +35,6 @@ router.post("/api/burgers", (req, res) => {
         // Send back the ID of the new quote
         res.json({ id: resut.insertId})
     });
-});
+})
 
 module.exports = router;
