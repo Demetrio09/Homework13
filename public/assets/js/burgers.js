@@ -42,4 +42,19 @@ $(function () {
             }
         );
     });
+
+    $(".delete-button").on("click", function(event) {
+        let id = $(this).data("id");
+        console.log(id);
+
+        $.ajax("/api/burgers/" + id, {
+            type: "DELETE",
+            data: id
+        }).then(
+            function() {
+                console.log("burger has been deleted");
+                location.reload();
+            }
+        );
+    })
 })
